@@ -47,16 +47,19 @@ export default function App() {
       var sp1=document.createElement("span");
       var sp2=document.createElement("span");
       var sp3=document.createElement("span");
-      var sp4=document.createElement("p");
+      var s42=document.createElement("span");
+      var sp5=document.createElement("p");
       sp1.textContent=month;
       sp2.textContent="　　";
       sp3.textContent=weight;
-      sp4.textContent="";
+      sp4.textContent="kg";
+      sp5.textContent="";
     
       mo.appendChild(sp1);
       mo.appendChild(sp2);
       mo.appendChild(sp3);
       mo.appendChild(sp4);
+      mo.appendChild(sp5);
     }
     
     document.getElementById("m").value="";
