@@ -47,7 +47,7 @@ export default function App() {
       var sp1=document.createElement("span");
       var sp2=document.createElement("span");
       var sp3=document.createElement("span");
-      var s42=document.createElement("span");
+      var sp4=document.createElement("span");
       var sp5=document.createElement("p");
       sp1.textContent=month;
       sp2.textContent="　　";
@@ -136,8 +136,8 @@ export default function App() {
       {boo3 && (
         <p>
           <h2>体重管理</h2>
-          <input type="text" id="m" placeholder="月/日" />
-          <input type="text" id="w" placeholder="体重" />
+          <input type="text" id="m" placeholder="例：1/1" />
+          <input type="text" id="w" placeholder="例：65" />
           <button type="button" onClick={printData}>追加</button>
         </p>
       )}
