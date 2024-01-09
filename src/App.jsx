@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function App() {
-  const [boo1,setBoo1]=useState(false);
+  const [boo1,setBoo1]=useState(true);
   const [boo2,setBoo2]=useState(false);
   const [boo3,setBoo3]=useState(false);
   const [boo4,setBoo4]=useState(false);
@@ -69,27 +69,38 @@ export default function App() {
   function printData2(){
     var su1=document.getElementById("s1").value;
     var su2=document.getElementById("s2").value;
-    if(s1!="" && su2!=""){
+    var su3=document.getElementById("s3").value;
+    if(s1!="" && su2!="" && su3!=""){
       var ad1=document.createElement("span");
       var ad2=document.createElement("span");
       var ad3=document.createElement("span");
-      var ad4=document.createElement("p");
+      var ad4=document.createElement("span");
       var ad5=document.createElement("span");
+      var ad6=document.createElement("span");
+      var ad7=document.createElement("span");
+      var ad8=document.createElement("p");
       var pa=document.getElementById("ex");
       ad1.textContent=su1;
       ad2.textContent=su2;
       ad3.textContent="分";
-      ad4.textContent="";
+      ad4.textContent=su3;
       ad5.textContent="　　";
+      ad6.textContent="　　";
+      ad7.textContent=" ";
+      ad8.textContent="";
     
       pa.appendChild(ad1);
       pa.appendChild(ad5);
       pa.appendChild(ad2);
-      pa.appendChild(ad3);
+      pa.appendChild(ad6);
       pa.appendChild(ad4);
+      pa.appendChild(ad7);
+      pa.appendChild(ad3);
+      pa.appendChild(ad8);
     }
     document.getElementById("s1").value="";
     document.getElementById("s2").value="";
+    document.getElementById("s3").value="";
   }
 
   function calcBmi(){
@@ -119,12 +130,22 @@ export default function App() {
         </ul>
       </nav>
 
+      {boo1 && (
+        <p>
+          <p>本サイトでは運動や体重に関する情報を記録しておくことができます。</p>
+          <p>＊　数字はすべて半角で入力してください。</p>
+          <p>＊　時間は~分で入力する (1時間 → 60分)</p>
+          <p>以下から今までの記録を確認することができます。</p>
+        </p>
+      )}
+
       {boo2 && (
         <p>
           <h1>運動時間</h1>
-          <p>時間は~分で入力</p>
+          <p>本ページでは運動に関する情報を記録します。必要な情報を入力したら追加ボタンで記録してください。</p>
           <input type="text" id="s1" placeholder="例：1/1" />
-          <input type="text" id="s2" placeholder="例：ランニング 30" />
+          <input type="text" id="s2" placeholder="例：ランニング" />
+          <input type="text" id="s3" placeholder="例：30" />
           <button type="button" onClick={printData2}>追加</button>
         </p>
       )}
@@ -136,6 +157,7 @@ export default function App() {
       {boo3 && (
         <p>
           <h2>体重管理</h2>
+          <p>本ページでは、体重に関する情報を記録します。必要な情報を入力したら追加ボタンで記録してください。</p>
           <input type="text" id="m" placeholder="例：1/1" />
           <input type="text" id="w" placeholder="例：65" />
           <button type="button" onClick={printData}>追加</button>
@@ -149,13 +171,15 @@ export default function App() {
       {boo7 && (
         <p>
           <h3>BMI計算</h3>
+          <p>現在の自分のBMIを求めることができます。</p>
+          <p>＊BMIの結果は四捨五入されています</p>
           <input type="text" id="hei" placeholder="身長(cm)" />
           <input type="text" id="wei" placeholder="体重(kg)" />
           <button type="button" onClick={calcBmi}>計算</button>
         
           {boo4 && (
             <p>
-                あなたのBMIは{BMI}です ({hei2}cm {wei2}kg) (BMIは四捨五入しています)
+                あなたのBMIは{BMI}です ({hei2}cm {wei2}kg) 
                 <button class="b1" type="button" onClick={reset}>削除</button>
             </p>
           )}
