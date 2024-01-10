@@ -133,8 +133,8 @@ export default function App() {
       {boo1 && (
         <p>
           <p>本サイトでは運動や体重に関する情報を記録しておくことができます。</p>
-          <p>＊　数字はすべて半角で入力してください。</p>
-          <p>＊　時間は~分で入力する (1時間 → 60分)</p>
+          <p>＊　数字はすべて半角で入力してください</p>
+          <p>＊　時間は~分で入力してください (1時間 → 60分)</p>
           <p>以下から今までの記録を確認することができます。</p>
         </p>
       )}
@@ -142,11 +142,11 @@ export default function App() {
       {boo2 && (
         <p>
           <h1>運動時間</h1>
-          <p>本ページでは運動に関する情報を記録します。必要な情報を入力したら追加ボタンで記録してください。</p>
+          <p>本ページでは運動に関する情報を記録します。必要な情報(日付・種目・時間)を入力したら追加ボタンで記録してください。</p>
           <input type="text" id="s1" placeholder="例：1/1" />
           <input type="text" id="s2" placeholder="例：ランニング" />
           <input type="text" id="s3" placeholder="例：30" />
-          <button type="button" onClick={printData2}>追加</button>
+          <button class="b2" type="button" onClick={printData2}>追加</button>
         </p>
       )}
 
@@ -157,10 +157,10 @@ export default function App() {
       {boo3 && (
         <p>
           <h2>体重管理</h2>
-          <p>本ページでは、体重に関する情報を記録します。必要な情報を入力したら追加ボタンで記録してください。</p>
+          <p>本ページでは、体重に関する情報を記録します。必要な情報(日付・体重)を入力したら追加ボタンで記録してください。</p>
           <input type="text" id="m" placeholder="例：1/1" />
           <input type="text" id="w" placeholder="例：65" />
-          <button type="button" onClick={printData}>追加</button>
+          <button class="b3" type="button" onClick={printData}>追加</button>
         </p>
       )}
 
@@ -175,7 +175,7 @@ export default function App() {
           <p>＊BMIの結果は四捨五入されています</p>
           <input type="text" id="hei" placeholder="身長(cm)" />
           <input type="text" id="wei" placeholder="体重(kg)" />
-          <button type="button" onClick={calcBmi}>計算</button>
+          <button class="b4" type="button" onClick={calcBmi}>計算</button>
         
           {boo4 && (
             <p>
