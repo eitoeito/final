@@ -132,17 +132,17 @@ export default function App() {
 
       {boo1 && (
         <p>
-          <p>本サイトでは運動や体重に関する情報を記録しておくことができます。</p>
-          <p>＊　数字はすべて半角で入力してください</p>
-          <p>＊　時間は~分で入力してください (1時間 → 60分)</p>
-          <p>以下から今までの記録を確認することができます。</p>
+          <p class="p1">本サイトでは運動や体重に関する情報を記録しておくことができます。</p>
+          <p class="pu1">＊　数字はすべて半角で入力してください</p>
+          <p class="pu2">＊　時間は~分で入力してください (1時間 → 60分)</p>
+          <p class="p2">以下から今までの記録を確認することができます。</p>
         </p>
       )}
 
       {boo2 && (
         <p>
           <h1>運動時間</h1>
-          <p>本ページでは運動に関する情報を記録します。必要な情報(日付・種目・時間)を入力したら追加ボタンで記録してください。</p>
+          <p class="p3">本ページでは運動に関する情報を記録します。必要な情報(日付・種目・時間)を入力したら追加ボタンで記録してください。</p>
           <input type="text" id="s1" placeholder="例：1/1" />
           <input type="text" id="s2" placeholder="例：ランニング" />
           <input type="text" id="s3" placeholder="例：30" />
@@ -157,7 +157,7 @@ export default function App() {
       {boo3 && (
         <p>
           <h2>体重管理</h2>
-          <p>本ページでは、体重に関する情報を記録します。必要な情報(日付・体重)を入力したら追加ボタンで記録してください。</p>
+          <p class="p4">本ページでは、体重に関する情報を記録します。必要な情報(日付・体重)を入力したら追加ボタンで記録してください。</p>
           <input type="text" id="m" placeholder="例：1/1" />
           <input type="text" id="w" placeholder="例：65" />
           <button class="b3" type="button" onClick={printData}>追加</button>
@@ -171,15 +171,15 @@ export default function App() {
       {boo7 && (
         <p>
           <h3>BMI計算</h3>
-          <p>現在の自分のBMIを求めることができます。</p>
-          <p>＊BMIの結果は四捨五入されています</p>
+          <p class="p5">現在の自分のBMIを求めることができます。</p>
+          <p class="pu3">＊BMIの結果は四捨五入されています</p>
           <input type="text" id="hei" placeholder="身長(cm)" />
           <input type="text" id="wei" placeholder="体重(kg)" />
           <button class="b4" type="button" onClick={calcBmi}>計算</button>
         
           {boo4 && (
             <p>
-                あなたのBMIは{BMI}です ({hei2}cm {wei2}kg) 
+                <p>あなたのBMIは{BMI}です ({hei2}cm {wei2}kg) </p>
                 <button class="b1" type="button" onClick={reset}>削除</button>
             </p>
           )}
