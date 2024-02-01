@@ -20,13 +20,6 @@ export default function App() {
     setBoo2(true);
     setBoo3(false);
 
-    var c=document.getElementById("ex");
-    var d=document.creteElement("p");
-    var bd=localStorage.getItem('playdata');
-    d.textContent=bd;
-    if(bd != null){
-      c.appendChild(d);
-    }
   }
 
   function change3(){
@@ -68,9 +61,6 @@ export default function App() {
       pa1.appendChild(ad3);
       pa1.appendChild(ad8);
     }
-
-    var data=document.getElementById("ex");
-    localStorage.setItem('playdata',data);
 
     document.getElementById("s1").value="";
     document.getElementById("s2").value="";
@@ -123,7 +113,6 @@ export default function App() {
 
   function del1(){
     document.getElementById("ex").textContent="";
-    localStorage.removeItem('playdata');
   }
 
   function del2(){
