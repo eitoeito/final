@@ -8,8 +8,6 @@ export default function App() {
   const [wei2,setWei2]=useState("");
   const [hei2,setHei2]=useState("");
 
-  
-
   function change1(){
     setBoo1(false);
     setBoo2(false);
@@ -48,8 +46,8 @@ export default function App() {
       ad5.textContent="　　";
       ad6.textContent="　　";
       ad7.textContent=" ";
-      ad8.textContent=" ";
-      ad9.textContent=" ";
+      ad8.textContent="\n";
+      ad9.textContent="";
     
       if(pa1.textContent != ""){
         pa1.appendChild(ad9);
