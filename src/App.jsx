@@ -1,26 +1,38 @@
 import { useState } from "react";
 
 export default function App() {
-  const [boo1,setBoo1]=useState(false);
+  const [boo1,setBoo1]=useState(true);
   const [boo2,setBoo2]=useState(false);
   const [boo3,setBoo3]=useState(false);
+  const [boo4,setBoo4]=useState(false);
   const [BMI,setBmi]=useState("");
   const [wei2,setWei2]=useState("");
   const [hei2,setHei2]=useState("");
+  const [swei,setswei]=useState("");
+  const [nwei,setnwei]=useState("");
 
   function change1(){
-    setBoo1(false);
-    setBoo2(false);
+    setBoo1(true);
+    setBoo3(false);
+    setBoo4(false);
   }
 
   function change2(){
-    setBoo1(true);
-    setBoo2(false);
+    setBoo1(false);
+    setBoo3(true);
+    setBoo4(false);
   }
 
   function change3(){
     setBoo1(false);
-    setBoo2(true);
+    setBoo3(false);
+    setBoo4(true);
+  }
+
+  function change4(){
+    setBoo1(false);
+    setBoo3(false);
+    setBoo4(false);
   }
 
   function printData1(){
@@ -64,7 +76,7 @@ export default function App() {
 
 
     var d1=document.getElementById("ex").textContent;
-    window.localStorage.setItem("data",d1);
+    window.localStorage.setItem("data1",d1);
 
     document.getElementById("s1").value="";
     document.getElementById("s2").value="";
@@ -74,6 +86,7 @@ export default function App() {
   function printData2(){
     var month=document.getElementById("m").value;
     var weight=document.getElementById("w").value;
+    setnwei(weight);
     if(month!="" && weight!=""){
       var mo=document.getElementById("addd");
       var sp1=document.createElement("span");
@@ -109,7 +122,7 @@ export default function App() {
 
 
   function fg(){
-    var dt=window.localStorage.getItem("data");
+    var dt=window.localStorage.getItem("data1");
     var dt1=document.getElementById("ex");
     dt1.textContent=dt;
 
@@ -122,7 +135,7 @@ export default function App() {
     var heights=document.getElementById("hei").value;
     var weights=document.getElementById("wei").value;
     if(heights!="" && weights!=""){
-      setBoo3(true);
+      setBoo2(true);
     }
     setBmi(Math.round(weights/((heights/100)*(heights/100))));
     setWei2(weights);
@@ -132,18 +145,31 @@ export default function App() {
 
   }
 
+  function set(){
+    var sd=document.getElementById("mok").value;
+    setswei(sd);
+    document.getElementById("mok").value="";
+  }
+
   function reset(){
-    setBoo3(false);
+    setBoo2(false);
   }
 
   function del1(){
-    document.getElementById("ex").textContent="";
-    window.localStorage.removeItem("data");
+    var n1=document.getElementById("ex").textContent;
+    if(n1 != ""){
+      document.getElementById("ex").textContent=""; 
+    }
+    window.localStorage.removeItem("data1");
   }
 
   function del2(){
-    document.getElementById("addd").textContent="";
+    var n2=document.getElementById("addd").textContent;
+    if (n2 != ""){
+      document.getElementById("addd").textContent="";  
+    }
     window.localStorage.removeItem("data2");
+    setnwei("");
   } 
 
     return (
@@ -151,38 +177,47 @@ export default function App() {
       <nav>
         <ul>
           <li><a href="#" onClick={change1}>Home</a></li>
+          <li><a href="#" onClick={change4}>記録</a></li>
           <li><a href="#" onClick={change2}>運動</a></li>
           <li><a href="#" onClick={change3}>体重</a></li>
         </ul>
       </nav>
 
-      <p>
-        <span className="p1">本サイトでは運動や体重に関する情報を記録しておくことができます。</span>
-       <br></br>
-        ＊　数字はすべて半角で入力してください<br></br>
-        ＊　時間は~分で入力してください (1時間 → 60分)
-      </p>
+      <button className="b7" type="button" onClick={fg}>復元</button>
+      <button className="b9" type="button" >リセット</button>
+      
 
-      <p>
-        <span className="p2">以下から現在のBMIを確認することができます。</span><br></br>
-        ＊　BMIの結果は四捨五入されて整数で表示されます (24.22... → 24)<br></br>
-        <input type="text" id="hei" placeholder="身長(cm)" />
-        <input type="text" id="wei" placeholder="体重(kg)" />
-        <button className="b4" type="button" onClick={calcBmi}>計算</button>
-        {boo3 && (
-          <span>
-            <br></br><span id="rei">あなたのBMIは{BMI}です ({hei2}cm {wei2}kg) </span>
-            <button className="b1" type="button" onClick={reset}>削除</button>
-          </span>
-        )}
-      </p>
+      {boo1 && (
+        <p>
+          <span className="p1">本サイトでは運動や体重に関する情報を記録しておくことができます。</span><br></br>
+          ＊　数字はすべて半角で入力してください<br></br>
+          ＊　時間は~分で入力してください (1時間 → 60分)<br></br><br></br>
+      
+          <span className="p2">目標体重を設定します</span><br></br>
+          <span>目標体重：{swei}kg　　現在の体重：{nwei}kg</span><br></br>
+          <input type="text" id="mok" placeholder="目標体重" />
+          <button className="b8" type="button" onClick={set}>設定</button><br></br><br></br>
+
+          <span className="p3">現在のBMIを計算することができます。</span><br></br>
+          ＊　BMIの結果は四捨五入されて整数で表示されます (24.22... → 24)<br></br>
+          <input type="text" id="hei" placeholder="身長(cm)" />
+          <input type="text" id="wei" placeholder="体重(kg)" />
+          <button className="b4" type="button" onClick={calcBmi}>計算</button>
+          {boo2 && (
+            <span>
+              <br></br><span id="rei">あなたのBMIは{BMI}です ({hei2}cm {wei2}kg) </span>
+              <button className="b1" type="button" onClick={reset}>削除</button>
+            </span>
+          )}
+        </p>
+      )}
 
       
 
-      {boo1 && (  
+      {boo3 && (  
         <p>
-          <h1>運動時間</h1>
-          <span className="p3">運動に関する情報を記録・削除します。必要な情報(日付・種目・時間)を入力したら追加ボタンで記録してください。</span><br></br>
+          <span className="p4">運動時間</span><br></br>
+          <span className="p5">運動に関する情報を記録・削除します。必要な情報(日付・種目・時間)を入力したら追加ボタンで記録してください。</span><br></br>
           <input type="text" id="s1" placeholder="例：1/1" />
           <input type="text" id="s2" placeholder="例：ランニング" />
           <input type="text" id="s3" placeholder="例：30" />
@@ -193,10 +228,10 @@ export default function App() {
 
       
 
-      {boo2 && (
+      {boo4 && (
         <p>
-          <h2>体重管理</h2>
-          <span className="p4">体重に関する情報を記録・削除します。必要な情報(日付・体重)を入力したら追加ボタンで記録してください。</span><br></br>
+          <span className="p6">体重管理</span><br></br>
+          <span className="p7">体重に関する情報を記録・削除します。必要な情報(日付・体重)を入力したら追加ボタンで記録してください。</span><br></br>
           <input type="text" id="m" placeholder="例：1/1" />
           <input type="text" id="w" placeholder="例：65" />
           <button className="b3" type="button" onClick={printData2}>追加</button>
@@ -204,16 +239,15 @@ export default function App() {
         </p>
       )}
 
-      <span className="p5">今までの記録</span>  
-      <button className="b7" type="button" onClick={fg}>復元</button>
+      <span className="p8">今までの記録</span>        
 
       <div className="m">
         <div className="m1">
-          <p className="p6">運動時間</p>
+          <p className="p9">運動時間</p>
           <p id="ex"></p>
         </div>
         <div className="m2">
-          <p className="p7">体重</p>
+          <p className="p10">体重</p>
           <p id="addd"></p>
         </div>
       </div>
