@@ -10,7 +10,7 @@ export default function App() {
   const [hei2,setHei2]=useState("");
   const [swei,setswei]=useState("");
   const [nwei,setnwei]=useState("");
-
+  
   function change1(){
     setBoo1(true);
     setBoo3(false);
@@ -115,6 +115,7 @@ export default function App() {
     
     var d2=document.getElementById("addd").textContent;
     window.localStorage.setItem("data2",d2);
+    window.localStorage.setItem("data4",weight);
 
     document.getElementById("m").value="";
     document.getElementById("w").value="";
@@ -129,6 +130,12 @@ export default function App() {
     var dt2=window.localStorage.getItem("data2");
     var dt3=document.getElementById("addd");
     dt3.textContent=dt2;
+
+    var dt4=window.localStorage.getItem("data3");
+    setswei(dt4);
+
+    var dt5=window.localStorage.getItem("data4");
+    setnwei(dt5);
   }
 
   function calcBmi(){
@@ -149,10 +156,26 @@ export default function App() {
     var sd=document.getElementById("mok").value;
     setswei(sd);
     document.getElementById("mok").value="";
+    window.localStorage.setItem("data3",sd);
   }
 
   function reset(){
     setBoo2(false);
+  }
+
+  function reset2(){
+    var a=document.getElementById("ex").textContent;
+    var b=document.getElementById("addd").textContent;
+    if(a!=""){
+      document.getElementById("ex").textContent="";
+    }
+    if(b!=""){
+      document.getElementById("addd").textContent="";
+    }
+    setBoo2(false);
+    setswei("");
+    setnwei("");
+    window.localStorage.clear();
   }
 
   function del1(){
@@ -184,7 +207,7 @@ export default function App() {
       </nav>
 
       <button className="b7" type="button" onClick={fg}>復元</button>
-      <button className="b9" type="button" >リセット</button>
+      <button className="b9" type="button" onClick={reset2} >リセット</button>
       
 
       {boo1 && (
