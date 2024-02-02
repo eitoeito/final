@@ -274,7 +274,6 @@ export default function App() {
           <p id="addd"></p>
         </div>
       </div>
-      
       </>
     );
   }
